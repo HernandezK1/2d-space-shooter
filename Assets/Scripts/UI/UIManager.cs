@@ -233,6 +233,7 @@ public class UIManager : MonoBehaviour
             SetActiveAllPages(false);
             pages[pageIndex].gameObject.SetActive(true);
             pages[pageIndex].SetSelectedUIToDefault();
+            if (pageIndex == 1) Debug.Log("Game Over Page");
         }
     }
 
