@@ -233,8 +233,20 @@ public class UIManager : MonoBehaviour
             SetActiveAllPages(false);
             pages[pageIndex].gameObject.SetActive(true);
             pages[pageIndex].SetSelectedUIToDefault();
-            if (pageIndex == 1) Debug.Log("Game Over Page");
+            if (pageIndex == 1) {
+                Debug.Log("Game Over Page");
+                Invoke("EndDelay", 1.5f);
+            }
+            if (pageIndex == 2)
+            {
+                Debug.Log("Game Over Page");
+                Invoke("EndDelay", 0f);
+            }
         }
+    }
+    public void EndDelay()
+    {
+        Time.timeScale = 0;
     }
 
     /// <summary>

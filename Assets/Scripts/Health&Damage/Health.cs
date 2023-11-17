@@ -1,18 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
+
 
 /// <summary>
 /// This class handles the health state of a game object.
 /// 
 /// Implementation Notes: 2D Rigidbodies must be set to never sleep for this to interact with trigger stay damage
 /// </summary>
+/// 
+
 public class Health : MonoBehaviour
 {
     [Header("Team Settings")]
     [Tooltip("The team associated with this damage")]
     public int teamId = 0;
+    public GameObject[] life;
+    public HealthBar healthbar;
 
     [Header("Health Settings")]
     [Tooltip("The default health value")]
@@ -33,7 +39,7 @@ public class Health : MonoBehaviour
     public int currentLives = 3;
     [Tooltip("The maximum number of lives this health can have")]
     public int maximumLives = 5;
-
+    public bool isPlayer = false;
     /// <summary>
     /// Description:
     /// Standard unity funciton called before the first frame update
@@ -45,6 +51,11 @@ public class Health : MonoBehaviour
     void Start()
     {
         SetRespawnPoint(transform.position);
+        if (healthbar != null)
+        {
+            healthbar.SetMaxHealth(maximumHealth);
+        }
+        
     }
 
     /// <summary>
@@ -121,6 +132,9 @@ public class Health : MonoBehaviour
     /// void (no return)
     /// </summary>
     /// <param name="damageAmount">The amount of damage to take</param>
+    /// 
+    public bool isBoss;
+
     public void TakeDamage(int damageAmount)
     {
         if (isInvincableFromDamage || isAlwaysInvincible)
@@ -129,6 +143,13 @@ public class Health : MonoBehaviour
         }
         else
         {
+            if(isBoss)
+            {
+                currentHealth -= damageAmount;
+
+                healthbar.SetHealth(currentHealth);
+            }
+            
             if (hitEffect != null)
             {
                 Instantiate(hitEffect, transform.position, transform.rotation, null);
@@ -185,6 +206,25 @@ public class Health : MonoBehaviour
         return false;
     }
 
+    private void CheckLives()
+    {
+        if (isPlayer) 
+        { 
+            if (currentLives < 3)
+            {
+                life[2].gameObject.SetActive(false);
+            }
+            if (currentLives < 2)
+            {
+                life[1].gameObject.SetActive(false);
+            }
+            if (currentLives < 1)
+            {
+                life[0].gameObject.SetActive(false);
+            }
+        }
+    }
+
     /// <summary>
     /// Description:
     /// Handles the death of the health. If a death effect is set, it is created. If lives are being used, the health is respawned.
@@ -208,7 +248,8 @@ public class Health : MonoBehaviour
         else
         {
             HandleDeathWithoutLives();
-        }      
+        }
+        CheckLives();
     }
 
     /// <summary>
@@ -257,6 +298,10 @@ public class Health : MonoBehaviour
         if (gameObject.GetComponent<Enemy>() != null)
         {
             gameObject.GetComponent<Enemy>().DoBeforeDestroy();
+        }
+        if (gameObject.GetComponent<EnemyCustom>() != null)
+        {
+            gameObject.GetComponent<EnemyCustom>().DoBeforeDestroy();
         }
         Destroy(this.gameObject);
     }

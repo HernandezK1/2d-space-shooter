@@ -10,13 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8282131552441171986}
   - component: {fileID: 8282131552441171989}
-  - component: {fileID: 8282131552441171988}
   - component: {fileID: 8022954021460962557}
   - component: {fileID: 4327850106528714602}
   - component: {fileID: 584683058982610388}
   - component: {fileID: 1977821741298174461}
   m_Layer: 9
-  m_Name: StraightShooter
+  m_Name: Boss1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1981481647227881137, guid: 78c80fc007bdeed409c072293dcce1c1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6122e7d6bb61d574088b0d5cfe631cee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -90,27 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &8282131552441171988
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8282131552441171991}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f21579361b1ad50429b2727f1aa92cef, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &8022954021460962557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,14 +102,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamId: 1
-  defaultHealth: 3
-  maximumHealth: 3
-  currentHealth: 3
-  invincibilityTime: 0
+  life: []
+  healthbar: {fileID: 0}
+  defaultHealth: 100
+  maximumHealth: 100
+  currentHealth: 150
+  invincibilityTime: 0.1
   isAlwaysInvincible: 0
   useLives: 0
   currentLives: 3
   maximumLives: 5
+  isPlayer: 0
+  isBoss: 0
   deathEffect: {fileID: 2452382815751308013, guid: 990f3751046a4d840806774f23579fe2, type: 3}
   hitEffect: {fileID: 6229913163069739088, guid: d6029318d740811488fd5dd38a7e1ce1, type: 3}
 --- !u!50 &4327850106528714602
@@ -165,14 +147,14 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.25, y: 1.28125}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1.4375, y: 1.09375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -205,7 +187,8 @@ MonoBehaviour:
   scoreValue: 5
   followTarget: {fileID: 0}
   followRange: 10
-  guns: []
+  guns:
+  - {fileID: 8282131553695226666}
   shootMode: 1
   movementMode: 2
   scrollDirection: {x: 0, y: 15, z: 0}
@@ -256,6 +239,6 @@ MonoBehaviour:
   projectilePrefab: {fileID: 4641165794769155162, guid: 5089b9cd653abda4ba6013a20e42c774, type: 3}
   projectileHolder: {fileID: 0}
   isPlayerControlled: 0
-  fireRate: 3
-  projectileSpread: 1
+  fireRate: 0.007
+  projectileSpread: 1e+25
   fireEffect: {fileID: 0}

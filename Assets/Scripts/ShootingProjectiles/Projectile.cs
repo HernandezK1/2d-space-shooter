@@ -36,4 +36,12 @@ public class Projectile : MonoBehaviour
         // move the transform
         transform.position = transform.position + transform.up * projectileSpeed * Time.deltaTime;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Barrier"))
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
