@@ -3109,9 +3109,13 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -37.1
       objectReference: {fileID: 0}
+    - target: {fileID: 3257562187311101310, guid: a3c5911445a697349bdc46f0c6396430, type: 3}
+      propertyPath: m_text
+      value: Final Objective
+      objectReference: {fileID: 0}
     - target: {fileID: 4453625172186375623, guid: a3c5911445a697349bdc46f0c6396430, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Level3
+      value: Level 2 and a half
       objectReference: {fileID: 0}
     - target: {fileID: 6008834416792396235, guid: a3c5911445a697349bdc46f0c6396430, type: 3}
       propertyPath: m_fontSize
