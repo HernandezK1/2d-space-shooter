@@ -515,11 +515,15 @@ PrefabInstance:
       objectReference: {fileID: 519820754}
     - target: {fileID: 8022954021460962557, guid: 7ce4b36d7cd677844bef8fff37af78e6, type: 3}
       propertyPath: currentHealth
-      value: 200
+      value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022954021460962557, guid: 7ce4b36d7cd677844bef8fff37af78e6, type: 3}
+      propertyPath: defaultHealth
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 8022954021460962557, guid: 7ce4b36d7cd677844bef8fff37af78e6, type: 3}
       propertyPath: maximumHealth
-      value: 150
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 8282131552441171986, guid: 7ce4b36d7cd677844bef8fff37af78e6, type: 3}
       propertyPath: m_RootOrder

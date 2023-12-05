@@ -2764,11 +2764,11 @@ MonoBehaviour:
   healthbar: {fileID: 0}
   defaultHealth: 1
   maximumHealth: 1
-  currentHealth: 1
+  currentHealth: 3
   invincibilityTime: 3
   isAlwaysInvincible: 0
   useLives: 1
-  currentLives: 3
+  currentLives: 1
   maximumLives: 5
   isPlayer: 1
   isBoss: 0
